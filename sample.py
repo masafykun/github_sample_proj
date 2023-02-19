@@ -13,7 +13,8 @@ def main():
         text = i.getText()
         link = i.attrs['href']
         index = pd.Series([text, link], index=df.columns)
-        df = df.append(index, ignore_index=True)
+        df = pd.concat([df, index.to_frame().T], ignore_index=True)
+        #更新されていない？
     print(df)
 
 if __name__=="__main__":
